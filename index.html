@@ -9,23 +9,26 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700&display=swap"
     rel="stylesheet">
   <style>
-    html, body {
-  overflow-x: hidden;
-}
+    html,
+    body {
+      overflow-x: hidden;
+    }
+
     /* Chrome, Edge, Safari */
-::-webkit-scrollbar {
-  display: none;
-}
+    ::-webkit-scrollbar {
+      display: none;
+    }
 
-/* Firefox */
-html {
-  scrollbar-width: none;
-}
+    /* Firefox */
+    html {
+      scrollbar-width: none;
+    }
 
-/* Internet Explorer / old Edge */
-body {
-  -ms-overflow-style: none;
-}
+    /* Internet Explorer / old Edge */
+    body {
+      -ms-overflow-style: none;
+    }
+
     :root {
       --green-dark: #0d3d1e;
       --green-mid: #1a6b35;
@@ -261,6 +264,7 @@ body {
         display: block;
       }
     }
+
     /* ========= PAGES ========= */
     .page {
       display: none;
@@ -647,8 +651,9 @@ body {
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto;
+      grid-template-rows: 220px;
       gap: 16px;
+      grid-auto-flow: dense;
     }
 
     .gallery-item {
@@ -667,7 +672,8 @@ body {
       grid-column: span 2;
     }
 
-    .gallery-item img {
+    .gallery-item img,
+    .gallery-item video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -691,6 +697,52 @@ body {
       padding: 20px;
     }
 
+    .gallery-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .video-item .gallery-content {
+      top: 15px !important;
+      left: 15px !important;
+      transform: none !important;
+      text-align: left;
+    }
+
+    .video-item .gallery-overlay {
+      z-index: 1;
+    }
+
+    .video-item video {
+      position: relative;
+      z-index: 2;
+    }
+
+
+    .gallery-content strong {
+      display: block;
+      font-size: 20px;
+      margin-top: 5px;
+    }
+
+    .gallery-content p {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
     .gallery-item:hover .gallery-overlay {
       opacity: 1;
     }
@@ -699,6 +751,12 @@ body {
       color: var(--white);
       font-size: 14px;
       font-weight: 600;
+    }
+
+    .gallery-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .gallery-placeholder {
@@ -898,70 +956,70 @@ body {
     }
 
     .partners-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-}
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
 
-.partner-chip {
-  background: var(--white);
-  border: 2px solid var(--green-pale);
-  border-radius: 16px;
-  padding: 16px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  min-width: 120px;
-  transition: all 0.3s;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  cursor: default;
-}
+    .partner-chip {
+      background: var(--white);
+      border: 2px solid var(--green-pale);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      min-width: 120px;
+      transition: all 0.3s;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      cursor: default;
+    }
 
-.partner-chip:hover {
-  border-color: var(--green-bright);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(46,168,75,0.15);
-}
+    .partner-chip:hover {
+      border-color: var(--green-bright);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(46, 168, 75, 0.15);
+    }
 
-.partner-logo-box {
-  width: 200px;
-  height: 104px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 10px;
-  overflow: hidden;
-}
+    .partner-logo-box {
+      width: 200px;
+      height: 104px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      overflow: hidden;
+    }
 
-.partner-logo-box img {
-  max-width: 100%;
-  max-height: 88px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
+    .partner-logo-box img {
+      max-width: 100%;
+      max-height: 88px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
 
-.partner-chip span {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--gray);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  text-align: center;
-}
+    .partner-chip span {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-align: center;
+    }
 
-.partners-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  align-items: stretch;
-}
+    .partners-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: stretch;
+    }
 
     /* ========= TESTIMONIALS ========= */
     .testimonials-grid {
@@ -1523,13 +1581,13 @@ body {
       opacity: 0;
       transform: translateY(10px);
       transition: 0.3s;
-      pointer-events:none;
+      pointer-events: none;
     }
 
     .contact-message.show {
       opacity: 1;
       transform: translateY(0);
-      pointer-events:auto;
+      pointer-events: auto;
     }
 
     /* ========= ABOUT PAGE ========= */
@@ -1719,7 +1777,26 @@ body {
       object-fit: cover;
     }
 
+    .gallery-page-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(46, 168, 75, 0.75), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .gallery-page-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-page-item:hover img {
+      transform: scale(1.05);
+      transition: transform 0.4s;
+    }
+
     .gallery-add-box {
+      margin-top: 30px;
       grid-column: span 3;
       background: linear-gradient(135deg, var(--green-pale), #c4efd4);
       border: 3px dashed var(--green-mid);
@@ -1859,6 +1936,7 @@ body {
       .logo-title {
         font-size: 14px;
       }
+
       nav {
         padding: 0 20px;
       }
@@ -1945,6 +2023,21 @@ body {
       .page-hero h1 {
         font-size: 32px;
       }
+
+      .partners-strip {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .partner-chip {
+        width: 100%;
+      }
+
+      .partner-logo-box {
+        width: 100%;
+        height: 90px;
+      }
     }
   </style>
 </head>
@@ -1963,13 +2056,13 @@ body {
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="#" onclick="showPage('home')">Home</a></li>
-      <li><a href="#" onclick="showPage('about')">About</a></li>
-      <li><a href="#" onclick="showPage('services')">Services</a></li>
-      <li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
-      <li><a href="#" onclick="showPage('pricing')">Pricing</a></li>
-      <li><a href="#" onclick="showPage('faq')">FAQ</a></li>
-      <li><a href="#" onclick="showPage('contact')" class="nav-cta">Get Quote</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('about')">About</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('services')">Services</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('gallery')">Gallery</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('pricing')">Pricing</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('faq')">FAQ</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('contact')" class="nav-cta">Get Quote</a></li>
     </ul>
     <div class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu" role="button">
       <span></span>
@@ -1980,13 +2073,13 @@ body {
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="#" onclick="showPage('home');closeMobileMenu()">Home</a></li>
-      <li><a href="#" onclick="showPage('about');closeMobileMenu()">About</a></li>
-      <li><a href="#" onclick="showPage('services');closeMobileMenu()">Services</a></li>
-      <li><a href="#" onclick="showPage('gallery');closeMobileMenu()">Gallery</a></li>
-      <li><a href="#" onclick="showPage('pricing');closeMobileMenu()">Pricing</a></li>
-      <li><a href="#" onclick="showPage('faq');closeMobileMenu()">FAQ</a></li>
-      <li><a href="#" onclick="showPage('contact');closeMobileMenu()" class="nav-cta">Get Quote</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('home');closeMobileMenu()">Home</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('about');closeMobileMenu()">About</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('services');closeMobileMenu()">Services</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('gallery');closeMobileMenu()">Gallery</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('pricing');closeMobileMenu()">Pricing</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('faq');closeMobileMenu()">FAQ</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('contact');closeMobileMenu()" class="nav-cta">Get Quote</a></li>
     </ul>
   </div>
   <!-- ============ HOME PAGE ============ -->
@@ -2179,7 +2272,8 @@ body {
         </div>
         <div class="gallery-grid">
           <div class="gallery-item tall">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/8.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">📸</div>
               <strong>Packing in Progress</strong>
               <p>Upload photos of your team packing household items</p>
@@ -2187,7 +2281,8 @@ body {
             <div class="gallery-overlay"><span>Expert Packing Technique</span></div>
           </div>
           <div class="gallery-item">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/22.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">👷</div>
               <strong>Our Team</strong>
               <p>Professional, uniformed crew</p>
@@ -2195,7 +2290,8 @@ body {
             <div class="gallery-overlay"><span>Trained Professionals</span></div>
           </div>
           <div class="gallery-item">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/3.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">🚚</div>
               <strong>Our Fleet</strong>
               <p>Modern, well-maintained trucks</p>
@@ -2203,146 +2299,170 @@ body {
             <div class="gallery-overlay"><span>GPS-Enabled Vehicles</span></div>
           </div>
           <div class="gallery-item wide">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/18.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">📦</div>
               <strong>Loading & Logistics</strong>
               <p>Systematic loading for maximum safety</p>
             </div>
             <div class="gallery-overlay"><span>Careful Loading Process</span></div>
           </div>
-          <div class="gallery-item">
-            <div class="gallery-placeholder">
+          <div class="gallery-item video-item">
+            <video autoplay muted loop playsinline controls>
+              <source src="./Gallery/Review-1.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-content">
               <div class="icon">🏠</div>
               <strong>Happy Customers</strong>
               <p>Smiling families at new homes</p>
             </div>
-            <div class="gallery-overlay"><span>Customer Stories</span></div>
           </div>
-        </div>
-        <div style="text-align:center;margin-top:36px">
-          <button class="btn-primary" onclick="showPage('gallery')">View Full Gallery →</button>
+          <div class="gallery-item video-item">
+            <video autoplay muted loop playsinline controls>
+              <source src="./Gallery/Reel-1.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-content">
+              <div class="icon">🏠</div>
+              <strong>Sensetive Packing</strong>
+              <p>Best packing of Sensetive Goods</p>
+            </div>
+          </div>
+          <div class="gallery-item video-item">
+            <video autoplay muted loop playsinline controls>
+              <source src="./Gallery/Reel-2.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-content">
+              <div class="icon">🏠</div>
+              <strong>Best Handling Team</strong>
+              <p>Handling goods carefully</p>
+            </div>
+          </div>
+          <div class="gallery-overlay"><span>Customer Stories</span></div>
         </div>
       </div>
-    </section>
+      <div style="text-align:center;margin-top:36px">
+        <button class="btn-primary" onclick="showPage('gallery')">View Full Gallery →</button>
+      </div>
+  </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="section">
-      <div class="section-inner">
-        <div class="section-header">
-          <div class="section-label">Reviews</div>
-          <h2 class="section-title">What Our <span>Clients Say</span></h2>
-          <p class="section-sub">Trusted by thousands of families and businesses across India.</p>
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Reviews</div>
+        <h2 class="section-title">What Our <span>Clients Say</span></h2>
+        <p class="section-sub">Trusted by thousands of families and businesses across India.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Evergreen made our inter-city move completely stress-free. Every item was packed with such care — not a
+            single thing was damaged. The team was professional, punctual, and incredibly helpful."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">R</div>
+            <div class="author-info">
+              <h5>Rajesh Sharma</h5><span>Delhi → Mumbai Move</span>
+            </div>
+          </div>
         </div>
-        <div class="testimonials-grid">
-          <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
-            <p>"Evergreen made our inter-city move completely stress-free. Every item was packed with such care — not a
-              single thing was damaged. The team was professional, punctual, and incredibly helpful."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">R</div>
-              <div class="author-info">
-                <h5>Rajesh Sharma</h5><span>Delhi → Mumbai Move</span>
-              </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"We shifted our entire office with Evergreen. Minimal disruption, systematic labeling, everything set up
+            exactly as we wanted. Highly recommend for corporate relocations!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">P</div>
+            <div class="author-info">
+              <h5>Priya Mehta</h5><span>Office Relocation, Bangalore</span>
             </div>
           </div>
-          <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
-            <p>"We shifted our entire office with Evergreen. Minimal disruption, systematic labeling, everything set up
-              exactly as we wanted. Highly recommend for corporate relocations!"</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">P</div>
-              <div class="author-info">
-                <h5>Priya Mehta</h5><span>Office Relocation, Bangalore</span>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
-            <p>"My car reached Hyderabad without a scratch! The enclosed carrier transport was exactly what I needed.
-              Real-time tracking made it so reassuring. Outstanding service!"</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">A</div>
-              <div class="author-info">
-                <h5>Amit Verma</h5><span>Car Transport, Chennai</span>
-              </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"My car reached Hyderabad without a scratch! The enclosed carrier transport was exactly what I needed.
+            Real-time tracking made it so reassuring. Outstanding service!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div class="author-info">
+              <h5>Amit Verma</h5><span>Car Transport, Chennai</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PARTNERS -->
-    <section class="section partners-bg">
-      <div class="section-inner">
-        <div class="section-header">
-          <div class="section-label">Trusted By</div>
-          <h2 class="section-title">Our Proud <span>Partner Brands</span></h2>
-          <p class="section-sub">We're the preferred logistics and relocation partner for India's leading companies.</p>
+  <!-- PARTNERS -->
+  <section class="section partners-bg">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Trusted By</div>
+        <h2 class="section-title">Our Proud <span>Partner Brands</span></h2>
+        <p class="section-sub">We're the preferred logistics and relocation partner for India's leading companies.</p>
+      </div>
+      <div class="partners-strip">
+        <div class="partner-chip">
+          <div class="partner-logo-box" style="background:#fff">
+            <img src="./partners logo/APML.png" />
+          </div>
+          <span>APML</span>
         </div>
-        <div class="partners-strip">
-          <div class="partner-chip">
-            <div class="partner-logo-box" style="background:#fff">
-              <img src="./partners logo/APML.png" />
-            </div>
-            <span>APML</span>
+        <div class="partner-chip">
+          <div class="partner-logo-box" style="background:#fff">
+            <img src="./partners logo/MAXVAL.webp" />
           </div>
-          <div class="partner-chip">
-            <div class="partner-logo-box" style="background:#fff">
-              <img src="./partners logo/MAXVAL.webp" />
-            </div>
-            <span>MAXVAL</span>
+          <span>MAXVAL</span>
+        </div>
+        <div class="partner-chip">
+          <div class="partner-logo-box" style="background:#fff">
+            <img src="./partners logo/reliance.png" />
           </div>
-          <div class="partner-chip">
-            <div class="partner-logo-box" style="background:#fff">
-              <img src="./partners logo/reliance.png" />
-            </div>
-            <span>Reliance</span>
+          <span>Reliance</span>
+        </div>
+        <div class="partner-chip">
+          <div class="partner-logo-box" style="background:#fff">
+            <img src="./partners logo/Bharat.png" />
           </div>
-          <div class="partner-chip">
-            <div class="partner-logo-box" style="background:#fff">
-              <img src="./partners logo/Bharat.png" />
-            </div>
-            <span>Bharat Electronics</span>
+          <span>Bharat Electronics</span>
+        </div>
+        <div class="partner-chip">
+          <div class="partner-logo-box" style="background:#fff">
+            <img src="./partners logo/Store my goods.avif" />
           </div>
-          <div class="partner-chip">
-            <div class="partner-logo-box" style="background:#fff">
-              <img src="./partners logo/Store my goods.avif" />
-            </div>
-            <span>Store My Goods</span>
+          <span>Store My Goods</span>
+        </div>
+        <div class="partner-chip">
+          <div class="partner-logo-box" style="background:#fff">
+            <img src="./partners logo/polycab.png" />
           </div>
-          <div class="partner-chip">
-            <div class="partner-logo-box" style="background:#fff">
-              <img src="./partners logo/polycab.png" />
-            </div>
-            <span>POLYCAB</span>
+          <span>POLYCAB</span>
+        </div>
+        <div class="partner-chip">
+          <div class="partner-logo-box" style="background:#fff">
+            <img src="./partners logo/tata.png" />
           </div>
-          <div class="partner-chip">
-            <div class="partner-logo-box" style="background:#fff">
-              <img src="./partners logo/tata.png" />
-            </div>
-            <span>Tata Motors</span>
+          <span>Tata Motors</span>
+        </div>
+        <div class="partner-chip">
+          <div class="partner-logo-box" style="background:#fff">
+            <img src="./partners logo/Mi.png" />
           </div>
-          <div class="partner-chip">
-            <div class="partner-logo-box" style="background:#fff">
-              <img src="./partners logo/Mi.png" />
-            </div>
-            <span>Mi Xiaomi</span>
+          <span>Mi Xiaomi</span>
+        </div>
+        <div class="partner-chip">
+          <div class="partner-logo-box" style="background:#fff">
+            <img src="./partners logo/zingbus.webp" />
           </div>
-          <div class="partner-chip">
-            <div class="partner-logo-box" style="background:#fff">
-              <img src="./partners logo/zingbus.webp" />
-            </div>
-            <span>Zingbus</span>
+          <span>Zingbus</span>
+        </div>
+        <div class="partner-chip">
+          <div class="partner-logo-box" style="background:#fff">
+            <img src="./partners logo/apollo.png" />
           </div>
-          <div class="partner-chip">
-            <div class="partner-logo-box" style="background:#fff">
-              <img src="./partners logo/apollo.png" />
-            </div>
-            <span>Apollo Tyres</span>
-          </div>
+          <span>Apollo Tyres</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
   </div>
 
@@ -2603,68 +2723,77 @@ body {
 
         <div class="gallery-page-grid">
           <div class="gallery-page-item" data-cat="packing">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/16.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">📦</div><strong>Packing Household Items</strong>
-              <p>Upload your team photos here</p>
+              <p>Safety of your Goods</p>
             </div>
           </div>
           <div class="gallery-page-item" data-cat="team">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/24.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">👷</div><strong>Team in Uniform</strong>
               <p>Professional crew ready for work</p>
             </div>
           </div>
           <div class="gallery-page-item" data-cat="transport">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/11.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">🚚</div><strong>Our Trucks & Fleet</strong>
-              <p>Modern GPS-enabled vehicles</p>
+              <p>Best Transportation According to your Goods</p>
             </div>
           </div>
           <div class="gallery-page-item" data-cat="packing">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/18.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">🛋️</div><strong>Furniture Wrapping</strong>
               <p>Protective stretch wrap process</p>
             </div>
           </div>
           <div class="gallery-page-item" data-cat="office">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/7.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">🏢</div><strong>Office Relocation</strong>
               <p>Systematic office packing</p>
             </div>
           </div>
           <div class="gallery-page-item" data-cat="clients">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/24.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">😊</div><strong>Happy Family</strong>
               <p>Delighted customers after move</p>
             </div>
           </div>
           <div class="gallery-page-item" data-cat="transport">
-            <div class="gallery-placeholder">
-              <div class="icon">🚗</div><strong>Car Transport</strong>
-              <p>Vehicle safely loaded on carrier</p>
+            <img src="./Gallery/17.jpeg" alt="Packing Service">
+            <div class="gallery-content">
+              <div class="icon">🚗</div><strong>Goods Safety</strong>
+              <p>Goods safely loading on Truck</p>
             </div>
           </div>
           <div class="gallery-page-item" data-cat="packing">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/15.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">📸</div><strong>Fragile Items</strong>
               <p>Special care packaging</p>
             </div>
           </div>
           <div class="gallery-page-item" data-cat="team">
-            <div class="gallery-placeholder">
+            <img src="./Gallery/23.jpeg" alt="Packing Service">
+            <div class="gallery-content">
               <div class="icon">🤝</div><strong>Team Meeting</strong>
               <p>Daily briefing & coordination</p>
             </div>
           </div>
         </div>
 
-        <div class="gallery-add-box">
+        <!-- <div class="gallery-add-box">
           <h3>📷 Add Your Own Photos</h3>
           <p>Replace these placeholders with real images of your team, work, and happy customers. Simply edit the HTML
             to add your image sources.</p>
           <button class="btn-primary" onclick="showPage('contact')">Contact Us to Get Started</button>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <!-- Photo Categories -->
@@ -2733,11 +2862,8 @@ body {
             <p class="price">Starting from ₹4,999*</p>
             <ul class="pricing-list">
               <li>Full packing & unpacking</li>
-              <li>Up to 2 tons load</li>
-              <li>Transit insurance included</li>
               <li>Dedicated move manager</li>
-              <li>GPS tracking</li>
-              <li>Delivery in 2–5 days</li>
+              <li>Instant Delivery</li>
             </ul>
             <button class="btn-primary" onclick="showPage('contact')">Get Quote →</button>
           </div>
@@ -2745,30 +2871,26 @@ body {
             <div class="popular-badge">Most Popular</div>
             <div class="pricing-icon">🏡</div>
             <h3>2 BHK / 3 BHK</h3>
-            <p class="price">Starting from ₹9,999*</p>
+            <p class="price">Starting from ₹8,999*</p>
             <ul class="pricing-list">
               <li>Full packing & unpacking</li>
-              <li>Up to 6 tons load</li>
               <li>Premium packing materials</li>
               <li>Furniture assembly included</li>
-              <li>Real-time GPS tracking</li>
-              <li>Delivery in 2–7 days</li>
-              <li>Free storage up to 3 days</li>
+              <li>Instant Delivery</li>
             </ul>
             <button class="btn-primary" onclick="showPage('contact')">Get Quote →</button>
           </div>
           <div class="pricing-card">
             <div class="pricing-icon">🏢</div>
             <h3>4 BHK / Office</h3>
-            <p class="price">Starting from ₹19,999*</p>
+            <p class="price">Starting from ₹14,999*</p>
             <ul class="pricing-list">
               <li>Full premium packing</li>
-              <li>Up to 15 tons load</li>
               <li>Custom wooden crating</li>
               <li>IT equipment handling</li>
               <li>Dedicated logistics team</li>
               <li>White-glove delivery</li>
-              <li>7-day free storage</li>
+              <li>Instant Delivery</li>
             </ul>
             <button class="btn-primary" onclick="showPage('contact')">Get Quote →</button>
           </div>
@@ -2778,31 +2900,7 @@ body {
       </div>
     </section>
 
-    <section class="section partners-bg">
-      <div class="section-inner">
-        <div class="section-header">
-          <div class="section-label">Add-On Services</div>
-          <h2 class="section-title">Customize Your <span>Move</span></h2>
-        </div>
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">🚗</div>
-            <h3>Car Transport</h3>
-            <p>Enclosed carrier transport for your vehicle. ₹6,000–₹18,000 depending on distance and car type.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">🏪</div>
-            <h3>Storage (Monthly)</h3>
-            <p>Secure warehouse storage from ₹1,500/month for standard unit. Climate-controlled options available.</p>
-          </div>
-          <div class="service-card">
-            <div class="service-icon">🛡️</div>
-            <h3>Extended Insurance</h3>
-            <p>Full value declared insurance for high-value items, antiques, and electronics. Highly recommended.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+
   </div>
 
   <!-- ============ FAQ PAGE ============ -->
@@ -2914,7 +3012,7 @@ body {
               <div class="contact-icon">📧</div>
               <div>
                 <h4>Email Us</h4>
-                <p>info@evergreenpackers.in<br>support@evergreenpackers.in</p>
+                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e68f888089a68390839481948383889687858d839495c88f88">[email&#160;protected]</a><br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0d3d5d0d0cfd2d4e0c5d6c5d2c7d2c5c5ced0c1c3cbc5d2d38ec9ce">[email&#160;protected]</a></p>
               </div>
             </div>
             <div class="contact-detail">
@@ -2990,9 +3088,6 @@ body {
                     <option>Home Relocation – 3 BHK</option>
                     <option>Home Relocation – 4+ BHK</option>
                     <option>Office Shifting</option>
-                    <option>Vehicle Transport</option>
-                    <option>Warehouse Storage</option>
-                    <option>International Packing</option>
                     <option>Industrial Shifting</option>
                   </select>
                 </div>
@@ -3063,7 +3158,7 @@ body {
           <ul>
             <li><a>+91 98765 43210</a></li>
             <li><a>+91 91234 56789</a></li>
-            <li><a>info@evergreenpackers.in</a></li>
+            <li><a><span class="__cf_email__" data-cfemail="2c45424a436c495a495e4b5e4949425c4d4f47495e5f024542">[email&#160;protected]</span></a></li>
             <li><a>New Delhi – 110016</a></li>
             <li><a>Mon–Sat: 8AM–9PM</a></li>
           </ul>
@@ -3072,10 +3167,14 @@ body {
       <div class="footer-bottom">
         <p>© 2025 Evergreen Professional Packers & Movers. All Rights Reserved.</p>
         <div class="footer-socials">
-          <a href="" class="social-btn" title="Facebook" target="_blank"><img class="main-contact" src="./icons/facebook.png" /></a>
-          <a href="" class="social-btn" title="Instagram" target="_blank"><img class="main-contact" src="./icons/ig.png" /></a>
-          <a href="" class="social-btn" title="WhatsApp" target="_blank"><img class="main-contact" src="./icons/whatsapp.png" /></a>
-          <a href="" class="social-btn" title="YouTube" target="_blank"><img class="main-contact" src="./icons/youtube.png" /></a>
+          <a href="" class="social-btn" title="Facebook" target="_blank"><img class="main-contact"
+              src="./icons/facebook.png" /></a>
+          <a href="" class="social-btn" title="Instagram" target="_blank"><img class="main-contact"
+              src="./icons/ig.png" /></a>
+          <a href="" class="social-btn" title="WhatsApp" target="_blank"><img class="main-contact"
+              src="./icons/whatsapp.png" /></a>
+          <a href="" class="social-btn" title="YouTube" target="_blank"><img class="main-contact"
+              src="./icons/youtube.png" /></a>
         </div>
       </div>
     </div>
@@ -3087,10 +3186,10 @@ body {
 
     <a class="contact-option whatsapp" href="https://wa.me/919876543210" target="_blank"><img class="contact-whatsapp"
         src="./icons/whatsapp.png" width="45px" style="transition: 0.3s;" /></a>
-    <a class="contact-option email" href="mailto:example@email.com"><img class="contact-email" src="./icons/mail.png"
+    <a class="contact-option email" href="/cdn-cgi/l/email-protection#badfc2dbd7cad6dffadfd7dbd3d694d9d5d7"><img class="contact-email" src="./icons/mail.png"
         width="45px" style="transition: 0.3s;" /></a>
-    <a class="contact-option call" href="tel:+919876543210"><img class="contact-call" src="./icons/telephone.png" width="45px"
-        style="transition: 0.3s;" /></a>
+    <a class="contact-option call" href="tel:+919876543210"><img class="contact-call" src="./icons/telephone.png"
+        width="45px" style="transition: 0.3s;" /></a>
 
     <div class="floating-call" onclick="toggleMenu()"><img class="main-contact" src="./icons/call.png" />
       <div class="contact-message">
@@ -3098,96 +3197,91 @@ body {
       </div>
 
     </div>
+  </div>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    setTimeout(function () {
+      const msg = document.querySelector(".contact-message");
+      msg.classList.add("show");
 
-    <script>
+      // hide after 5 seconds
       setTimeout(function () {
-        const msg = document.querySelector(".contact-message");
-        msg.classList.add("show");
+        msg.classList.remove("show");
+      }, 10000);
 
-        // hide after 5 seconds
-        setTimeout(function () {
-          msg.classList.remove("show");
-        }, 10000);
+    }, 5000);
 
-      }, 5000);
+    function toggleMobileMenu() {
+      var menu = document.getElementById("mobileMenu");
+      var hamburger = document.getElementById("navHamburger");
+      menu.classList.toggle("open");
+      hamburger.classList.toggle("open");
+    }
 
-      function toggleMobileMenu() {
-        var menu = document.getElementById("mobileMenu");
-        var hamburger = document.getElementById("navHamburger");
-        menu.classList.toggle("open");
-        hamburger.classList.toggle("open");
+    function closeMobileMenu() {
+      document.getElementById("mobileMenu").classList.remove("open");
+      document.getElementById("navHamburger").classList.remove("open");
+    }
+    function toggleMenu() {
+      document.querySelector(".floating-contact").classList.toggle("active");
+    }
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    function submitQuick() {
+      const name = document.getElementById('qName').value;
+      const phone = document.getElementById('qPhone').value;
+      if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
+      document.getElementById('quickMsg').style.display = 'block';
+      setTimeout(() => document.getElementById('quickMsg').style.display = 'none', 5000);
+    }
+
+    function submitContact() {
+      const name = document.getElementById('cName').value;
+      const phone = document.getElementById('cPhone').value;
+      const from = document.getElementById('cFrom').value;
+      const to = document.getElementById('cTo').value;
+      const service = document.getElementById('cService').value;
+      if (!name || !phone || !from || !to || !service) {
+        alert('Please fill all required fields (marked with *).'); return;
       }
+      document.getElementById('contactSuccess').style.display = 'block';
+      document.getElementById('contactSuccess').scrollIntoView({ behavior: 'smooth' });
+    }
 
-      function closeMobileMenu() {
-              document.getElementById("mobileMenu").classList.remove("open");
-              document.getElementById("navHamburger").classList.remove("open");
-            }
-      function toggleMenu() {
-        document.querySelector(".floating-contact").classList.toggle("active");
-      }
-      function showPage(id) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-
-      function toggleFaq(el) {
-        const item = el.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-      }
-
-      function submitQuick() {
-        const name = document.getElementById('qName').value;
-        const phone = document.getElementById('qPhone').value;
-        if (!name || !phone) { alert('Please enter your name and phone number.'); return; }
-        document.getElementById('quickMsg').style.display = 'block';
-        setTimeout(() => document.getElementById('quickMsg').style.display = 'none', 5000);
-      }
-
-      function submitContact() {
-        const name = document.getElementById('cName').value;
-        const phone = document.getElementById('cPhone').value;
-        const from = document.getElementById('cFrom').value;
-        const to = document.getElementById('cTo').value;
-        const service = document.getElementById('cService').value;
-        if (!name || !phone || !from || !to || !service) {
-          alert('Please fill all required fields (marked with *).'); return;
+    function filterGallery(btn, cat) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.gallery-page-item').forEach(item => {
+        if (cat === 'all' || item.dataset.cat === cat) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
         }
-        document.getElementById('contactSuccess').style.display = 'block';
-        document.getElementById('contactSuccess').scrollIntoView({ behavior: 'smooth' });
-      }
-
-      function filterGallery(btn, cat) {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelectorAll('.gallery-page-item').forEach(item => {
-          if (cat === 'all' || item.dataset.cat === cat) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      }
-
-      // Smooth scroll reveal
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.style.opacity = '1';
-            e.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.service-card, .why-card, .testimonial-card, .pricing-card, .value-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(el);
       });
-    </script>
-</body>
+    }
 
+    // Smooth scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+  </script>
+
+</body>
 </html>
